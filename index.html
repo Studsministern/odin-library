@@ -15,38 +15,36 @@
         </div>
     </header>
     <main>
-        <div class="add-books">
-            <form id="add-books-form" method="POST" action="#">
-                <legend>Add a book to your book log!</legend>
+        <form id="add-books-form" method="POST" action="#">
+            <legend>Add a book to your book log!</legend>
 
-                <div class="inputs">
-                    <label for="title">
-                        <div>Title<span aria-label="required">*</span></div>
-                        <input type="text" id="title" name="title" placeholder=" " autofocus>
-                        <span class="error-message"></span>
-                    </label>
+            <div class="inputs">
+                <label for="title">
+                    <div>Title<span aria-label="required">*</span></div>
+                    <input type="text" id="title" name="title" placeholder=" " autofocus>
+                    <span class="error-message"></span>
+                </label>
 
-                    <label for="author">
-                        <div>Author<span aria-label="required">*</span></div>
-                        <input type="text" id="author" name="author" placeholder=" ">
-                        <span class="error-message"></span>
-                    </label>
+                <label for="author">
+                    <div>Author<span aria-label="required">*</span></div>
+                    <input type="text" id="author" name="author" placeholder=" ">
+                    <span class="error-message"></span>
+                </label>
 
-                    <label for="pages">
-                        <div>Pages<span aria-label="required">*</span></div>
-                        <input type="number" id="pages" name="pages" placeholder=" ">
-                        <span class="error-message"></span>
-                    </label>
+                <label for="pages">
+                    <div>Pages<span aria-label="required">*</span></div>
+                    <input type="number" id="pages" name="pages" placeholder=" ">
+                    <span class="error-message"></span>
+                </label>
 
-                    <label for="read">
-                        <div>Read?<span aria-label="required">*</span></div>
-                        <input type="checkbox" id="read" name="read" placeholder=" ">
-                    </label>
-                </div>
+                <label for="read">
+                    <div>Read?<span aria-label="required">*</span></div>
+                    <input type="checkbox" id="read" name="read" placeholder=" ">
+                </label>
+            </div>
 
-                <button type="submit">Add book</button>
-            </form>
-        </div>
+            <button type="submit">Add book</button>
+        </form>
 
         <div class="book-list">
             <!-- Added with the form above, using the JavaScript from js/script.js --> 
