@@ -56,13 +56,40 @@ form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--gap-medium);
+    gap: var(--gap-small);
     padding: var(--gap-medium) 0;
 }
 
 div.inputs {
     display: flex;
+    justify-content: start;
     gap: var(--gap-large);
+}
+
+label {
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+label[for="pages"] {
+    width: 6rem;
+}
+
+input {
+    margin-top: var(--gap-small);
+}
+
+input.error ~ .error-message {
+    height: min-content;
+    visibility: visible;
+}
+
+.error-message {
+    font-size: .6rem;
+    color: red;
+    height: var(--gap-small);
+    visibility: hidden;
 }
 
 button[type="submit"] {
