@@ -1,8 +1,9 @@
 /* Validations */
 function validateForm(e) {
+    e.preventDefault(); // Cancel submitting and refreshing the page
+
     if(form.checkValidity()) {
         console.log('Prevent default');
-        e.preventDefault(); // Cancel submit
 
         console.log('Adds a new book');
         // Form is valid, add a new book
@@ -15,8 +16,6 @@ function validateForm(e) {
         console.log(book);
         addBookToLibrary(book);
     } else {
-        e.preventDefault(); // Cancel submit
-
         labels.forEach(label => {
             const input = label.querySelector('input');
             
