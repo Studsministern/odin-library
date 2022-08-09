@@ -3,9 +3,6 @@ function validateForm(e) {
     e.preventDefault(); // Cancel submitting and refreshing the page
 
     if(form.checkValidity()) {
-        console.log('Prevent default');
-
-        console.log('Adds a new book');
         // Form is valid, add a new book
         const title = form.querySelector('#title').value;
         const author = form.querySelector('#author').value;
@@ -13,7 +10,6 @@ function validateForm(e) {
         const read = form.querySelector('#read').value;
 
         const book = new Book(title, author, pages, read);
-        console.log(book);
         addBookToLibrary(book);
     } else {
         labels.forEach(label => {
@@ -62,7 +58,6 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(book) {
-    console.log('Adds a book!');
     if(!(book instanceof Book)) {
         throw Error("Not a book!");
     }
@@ -74,25 +69,21 @@ function addBookToLibrary(book) {
     const bookTitle = document.createElement('p');
     bookTitle.classList.add('title');
     bookTitle.textContent = book.title;
-    console.log(book.title);
     bookElement.appendChild(bookTitle);
 
     const bookAuthor = document.createElement('p');
     bookAuthor.classList.add('author');
     bookAuthor.textContent = book.author;
-    console.log(book.author);
     bookElement.appendChild(bookAuthor);
 
     const bookPages = document.createElement('p');
     bookPages.classList.add('pages');
     bookPages.textContent = book.pages;
-    console.log(book.pages);
     bookElement.appendChild(bookPages);
 
     const bookRead = document.createElement('p');
     bookRead.classList.add('read');
     bookRead.textContent = book.read;
-    console.log(book.read);
     bookElement.appendChild(bookRead);
 
     bookList.appendChild(bookElement);
