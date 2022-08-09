@@ -11,6 +11,7 @@ function validateForm(e) {
 
         const book = new Book(title, author, pages, read);
         addBookToLibrary(book);
+        resetInputs();
     } else {
         labels.forEach(label => {
             const input = label.querySelector('input');
@@ -63,6 +64,15 @@ function validatePagesInputChange(input) { // Version of validateInputChange but
 
 function checkPagesValidity(input) {
     return /^[1-9]\d*$/.test(input.value); // RegExp testing
+}
+
+function resetInputs() {
+    labels.forEach(label => {
+        const input = label.querySelector('input');
+        input.value = '';
+        input.removeAttribute('class');
+        input.checked = false;
+    });
 }
 
 /* Library functions */
