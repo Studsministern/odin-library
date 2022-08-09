@@ -20,10 +20,6 @@ function validateForm(e) {
                 input.classList.add('hasError');
             }
         });
-
-        if(confirmPassword.value !== password.value) {
-            confirmPassword.classList.add('error');
-        }
     }
 }
 
