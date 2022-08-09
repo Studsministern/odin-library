@@ -42,6 +42,29 @@ function validateInputChange(input) { // Aggressive validation on every button p
     }
 }
 
+function validatePagesLabelFocusOut(input) { // Version of validateLabelFocusOut but for #pages
+    if(checkPagesValidity(input)) {
+        input.classList.remove('hasError');
+    } else if(input.value !== '' && !checkPagesValidity(input)) {
+        input.classList.add('error');
+        input.classList.add('hasError');
+    }
+}
+
+function validatePagesInputChange(input) { // Version of validateInputChange but for #pages
+    if(input.className.includes('hasError')) {
+        if(checkPagesValidity(input)) {
+            input.classList.remove('error');
+        } else {
+            input.classList.add('error');
+        }
+    }
+}
+
+function checkPagesValidity(input) {
+    return /^[1-9]\d*$/.test(input.value); // RegExp testing
+}
+
 /* Library functions */
 function Book(title, author, pages, read) {
     this.title = title;
@@ -99,8 +122,14 @@ let myLibrary = [];
 /* Event listeners */
 labels.forEach(label => {
     const input = label.querySelector('input');
-    label.addEventListener('focusout', () => validateLabelFocusOut(input));
-    input.addEventListener('input', () => validateInputChange(input));
+
+    if(input.id !== 'pages') {
+        label.addEventListener('focusout', () => validateLabelFocusOut(input));
+        input.addEventListener('input', () => validateInputChange(input));
+    } else {
+        label.addEventListener('focusout', () => validatePagesLabelFocusOut(input));
+        input.addEventListener('input', () => validatePagesInputChange(input));
+    }
 });
 
 submit.addEventListener('click', validateForm);
