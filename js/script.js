@@ -7,7 +7,7 @@ function validateForm(e) {
         const title = form.querySelector('#title').value;
         const author = form.querySelector('#author').value;
         const pages = form.querySelector('#pages').value;
-        const read = form.querySelector('#read').value;
+        const read = form.querySelector('#read').checked;
 
         const book = new Book(title, author, pages, read);
         addBookToLibrary(book);
