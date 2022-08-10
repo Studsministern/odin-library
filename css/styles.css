@@ -22,11 +22,11 @@
     --color-main: #FFF;
     --color-main-semi-transparent: rgba(255, 255, 255, 0.4);
     
-    --color-secondary: var(--color-lime-700);
-    --color-secondary-hover: var(--color-lime-600);
+    --color-secondary: #6aac0f; /* Based on --color-lime-600 */
+    --color-secondary-hover: #81b829; /* Based on --color-lime-500 */
     --color-secondary-active: var(--color-lime-500);
     
-    --color-shadow: #DDD;
+    --color-shadow: rgb(232, 232, 232);
     --bg-color-main: #EEE;
 }
 
