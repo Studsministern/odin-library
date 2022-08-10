@@ -107,13 +107,14 @@ header a span.link:active {
     grid-area: list;
     display: flex;
     flex-direction: column;
+    background: var(--color-main-semi-transparent);
+    padding-bottom: var(--gap-medium);
 }
 
 .book-list > * {
     display: flex;
     justify-content: space-between;
     padding: var(--gap-medium) var(--gap-large);
-    background: var(--color-main-semi-transparent);
 }
 
 .title {
@@ -129,7 +130,7 @@ header a span.link:active {
 }
 
 .read {
-    align-items: center;
+    text-align: end;
     width: 10%;
 }
 
