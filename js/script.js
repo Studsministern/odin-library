@@ -12,6 +12,7 @@ function validateForm(e) {
         const book = new Book(title, author, pages, status);
         addBookToLibrary(book);
         resetInputs();
+        hideForm();
     } else {
         labels.forEach(label => {
             const input = label.querySelector('input');
@@ -118,7 +119,18 @@ function addBookToLibrary(book) {
     bookList.appendChild(bookElement);
 }
 
+/* Show and hide form functions */
+function showForm() {
+    formContainer.classList.remove('hidden');
+}
+
+function hideForm() {
+    formContainer.classList.add('hidden');
+}
+
 /* DOM variables */
+const openFormButton = document.querySelector('.open-form');
+const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('form');
 const labels = form.querySelectorAll('label');
 const submit = form.querySelector('[type="submit"]');
@@ -130,6 +142,8 @@ const bookList = document.querySelector('.book-list');
 let myLibrary = [];
 
 /* Event listeners */
+openFormButton.addEventListener('click', showForm);
+
 labels.forEach(label => {
     const input = label.querySelector('input');
 

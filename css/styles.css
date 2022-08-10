@@ -42,6 +42,7 @@
 
 body {
     min-height: 100vh;
+    position: relative;
     display: grid;
     grid: "header                  header                                     header"                   var(--row-height)
           ".                       .                                          ."                        var(--gap-large)
@@ -163,8 +164,20 @@ button.open-form:active {
 }
 
 /* Form pop-up */
-form {
-    visibility: hidden; /* Temporary */
+.form-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(146, 146, 146, 0.5);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+form {    
     display: flex;
     flex-direction: column;
     align-items: flex-start;
