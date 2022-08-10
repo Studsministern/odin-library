@@ -134,6 +134,7 @@ const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('form');
 const labels = form.querySelectorAll('label');
 const submit = form.querySelector('[type="submit"]');
+const cancel = form.querySelector('button.cancel');
 form.noValidate = true; // Prevents submitting before validation
 
 const bookList = document.querySelector('.book-list');
@@ -157,3 +158,8 @@ labels.forEach(label => {
 });
 
 submit.addEventListener('click', validateForm);
+
+cancel.addEventListener('click', () => {
+    resetInputs();
+    hideForm();
+});

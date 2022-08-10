@@ -219,7 +219,14 @@ input.error ~ .error-message {
     visibility: hidden;
 }
 
-button[type="submit"] {
+.form-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button[type="submit"],
+button.cancel {
     padding: var(--gap-small) var(--gap-large);
 }
 
