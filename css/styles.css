@@ -42,11 +42,12 @@
 body {
     min-height: 100vh;
     display: grid;
-    grid: "header                   header header"                   var(--row-height)
-          ".                        form   ."                        min-content
-          ".                        list   ."                        min-content
-          ".                        .      ."                        minmax(var(--row-height), auto)
-        / var(--side-column-width)  calc(100vw - 2 * var(--side-column-width))   var(--side-column-width);
+    grid: "header                  header                                     header"                   var(--row-height)
+          ".                       list-headers                               ."                        calc(0.75 * var(--row-height))
+          ".                       list                                       ."                        min-content
+          ".                       add-book-button                            ."                        min-content
+          ".                       .                                          ."                        minmax(var(--row-height), auto)
+        / var(--side-column-width) calc(100vw - 2 * var(--side-column-width)) var(--side-column-width);
     font: 16px black Roboto, Helvetica, sans-serif;
     background: var(--bg-color-main);
 }
@@ -72,13 +73,80 @@ header a {
     font-size: .8rem;
 }
 
+/* List and list header */
+.list-headers {
+    height: 0;
+    min-height: 100%;
+    grid-area: list-headers;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--gap-large);
+    background: var(--color-main-semi-transparent);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.book-list {
+    grid-area: list;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-list > * {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--gap-medium) var(--gap-large);
+    background: var(--color-main-semi-transparent);
+}
+
+.title {
+    width: 25%;
+}
+
+.author {
+    width: 25%;
+}
+
+.pages {
+    width: 20%;
+}
+
+.read {
+    align-items: center;
+    width: 10%;
+}
+
+/* Add book div and button */
+.add-book {
+    grid-area: add-book-button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--gap-medium);
+}
+
+button.open-form {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    border: none;
+    border-radius: 3rem;
+    background: var(--color-main);
+}
+
+button.open-form:hover {
+    background: var(--color-main);
+}
+
+/* Form pop-up */
 form {
-    grid-area: form;
+    visibility: hidden; /* Temporary */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: var(--gap-small);
-    padding: var(--gap-medium) var(--gap-large);
+    padding: var(--gap-large);
     background: var(--color-main-semi-transparent);
 }
 
@@ -91,27 +159,6 @@ div.inputs {
 label {
     display: flex;
     flex-direction: column;
-}
-
-label[for="title"],
-.title {
-    width: 25%;
-}
-
-label[for="author"],
-.author {
-    width: 25%;
-}
-
-label[for="pages"],
-.pages {
-    width: 20%;
-}
-
-label[for="read"],
-.read {
-    align-items: center;
-    width: 10%;
 }
 
 input {
@@ -132,19 +179,6 @@ input.error ~ .error-message {
 
 button[type="submit"] {
     padding: var(--gap-small) var(--gap-large);
-}
-
-.book-list {
-    grid-area: list;
-    display: flex;
-    flex-direction: column;
-}
-
-.book-list > * {
-    display: flex;
-    justify-content: space-between;
-    padding: var(--gap-medium) var(--gap-large);
-    background: var(--color-main-semi-transparent);
 }
 
 /* Shadows */

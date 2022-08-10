@@ -17,7 +17,28 @@
         <a class="author" href="https://github.com/Studsministern">Made by <br> Eric Weidow</a>
     </header>
 
-    <form id="add-books-form" class="side-shadows" method="POST" action="#">
+    <div class="list-headers side-shadows">
+        <h2 class="title">Title</h2>
+        <h2 class="author">Author</h2>
+        <h2 class="pages">Pages</h2>
+        <h2 class="read">Read</h2>
+    </div>
+
+    <div class="book-list bottom-shadow side-shadows">
+        <div class="book">
+            <p class="title">The Intelligent Investor</p>
+            <p class="author">Benjamin Graham</p>
+            <p class="pages">587</p>
+            <p class="read">false</p>
+        </div>
+        <!-- Added with the form above, using the JavaScript from js/script.js --> 
+    </div>
+
+    <div class="add-book">
+        <button class="open-form">+</button>
+    </div>
+
+    <form id="add-books-form" method="POST" action="#">
         <div class="inputs">
             <label for="title">
                 <div>Title<span aria-label="required">*</span></div>
@@ -45,15 +66,5 @@
 
         <button type="submit">Add book</button>
     </form>
-
-    <div class="book-list bottom-shadow side-shadows">
-        <div class="book">
-            <p class="title">The Intelligent Investor</p>
-            <p class="author">Benjamin Graham</p>
-            <p class="pages">587</p>
-            <p class="read">false</p>
-        </div>
-        <!-- Added with the form above, using the JavaScript from js/script.js --> 
-    </div>
 </body>
 </html>
