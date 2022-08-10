@@ -186,6 +186,11 @@ form {
     background: var(--color-main-semi-transparent);
 }
 
+legend {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
 div.inputs {
     width: 100%;
     display: flex;
