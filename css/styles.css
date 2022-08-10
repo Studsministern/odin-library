@@ -31,6 +31,7 @@
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-size: inherit;
@@ -43,10 +44,11 @@ body {
     min-height: 100vh;
     display: grid;
     grid: "header                  header                                     header"                   var(--row-height)
+          ".                       .                                          ."                        var(--gap-large)
           ".                       list-headers                               ."                        calc(0.75 * var(--row-height))
           ".                       list                                       ."                        min-content
           ".                       add-book-button                            ."                        min-content
-          ".                       .                                          ."                        minmax(var(--row-height), auto)
+          ".                       .                                          ."                        minmax(var(--gap-large), auto)
         / var(--side-column-width) calc(100vw - 2 * var(--side-column-width)) var(--side-column-width);
     font: 16px black Roboto, Helvetica, sans-serif;
     background: var(--bg-color-main);
@@ -182,6 +184,10 @@ button[type="submit"] {
 }
 
 /* Shadows */
+.top-shadow {
+    box-shadow: 0 -.3rem .3rem var(--color-shadow);
+}
+
 .bottom-shadow {
     box-shadow: 0 .3rem .3rem var(--color-shadow);
 }
