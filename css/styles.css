@@ -1,17 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
-    --color-main: #FFF;
-    --color-main-semi-transparent: rgba(255, 255, 255, 0.4);
-    --color-shadow: #DDD;
-    --bg-color-main: #EEE;
-
     --side-column-width: 10vw;
     --row-height: 6rem;
 
     --gap-large: 2rem;
     --gap-medium: 1rem;
     --gap-small: .5rem;
+
+    --color-lime-50: #f7fee7;
+    --color-lime-100: #ecfccb;
+    --color-lime-200: #d9f99d;
+    --color-lime-300: #bef264;
+    --color-lime-400: #a3e635;
+    --color-lime-500: #84cc16;
+    --color-lime-600: #65a30d;
+    --color-lime-700: #4d7c0f;
+    --color-lime-800: #3f6212;
+    --color-lime-900: #365314;
+
+    --color-main: #FFF;
+    --color-main-semi-transparent: rgba(255, 255, 255, 0.4);
+    
+    --color-secondary: var(--color-lime-700);
+    --color-secondary-hover: var(--color-lime-600);
+    --color-secondary-active: var(--color-lime-500);
+    
+    --color-shadow: #DDD;
+    --bg-color-main: #EEE;
 }
 
 * {
