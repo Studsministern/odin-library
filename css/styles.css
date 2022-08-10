@@ -2,11 +2,11 @@
 
 :root {
     --color-main: #FFF;
-    --color-main-semi-transparent: #FFF9;
+    --color-main-semi-transparent: rgba(255, 255, 255, 0.4);
     --bg-color-main: #EEE;
 
-    --side-column-width: 10rem;
-    --edge-row-height: 5rem;
+    --side-column-width: 10vw;
+    --row-height: 5rem;
 
     --gap-large: 2rem;
     --gap-medium: 1rem;
@@ -25,10 +25,10 @@
 body {
     min-height: 100vh;
     display: grid;
-    grid: "header                   header header"                  var(--edge-row-height)
-          ".                        main   ."                       auto
-          "footer                   footer footer"                  var(--edge-row-height)
-        / var(--side-column-width)  1fr   var(--side-column-width);
+    grid: "header                   header header"                   var(--row-height)
+          ".                        form   ."                        min-content
+          ".                        list   ."                        auto
+        / var(--side-column-width)  1fr    var(--side-column-width);
     justify-content: space-between;
     font: 16px black Roboto, Helvetica, sans-serif;
     background: var(--bg-color-main);
@@ -37,22 +37,19 @@ body {
 header {
     grid-area: header;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: var(--side-column-width);
-    font-size: 2rem;
-    font-weight: 700;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 var(--side-column-width) var(--gap-medium) var(--side-column-width);
     background: var(--color-main);
+    font-weight: 700;
 }
 
-main {
-    grid-area: main;
-    display: flex;
-    flex-direction: column;
-    padding: var(--gap-small) 0;
+.logo {
+    font-size: 2rem;
 }
 
 form {
+    grid-area: form;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -61,19 +58,31 @@ form {
 }
 
 div.inputs {
+    width: 100%;
     display: flex;
-    justify-content: start;
-    gap: var(--gap-large);
+    justify-content: space-between;
 }
 
 label {
-    flex: 0;
     display: flex;
     flex-direction: column;
 }
 
+label[for="title"] {
+    width: 25%;
+}
+
+label[for="author"] {
+    width: 25%;
+}
+
 label[for="pages"] {
-    width: 6rem;
+    width: 20%;
+}
+
+label[for="read"] {
+    align-items: flex-end;
+    width: 10%;
 }
 
 input {
@@ -102,16 +111,10 @@ button[type="submit"] {
     flex-direction: column;}
 
 .book-list > * {
+    display: flex;
+    justify-content: space-between;
     padding: var(--gap-medium) var(--gap-large);
     background: var(--color-main-semi-transparent);
-}
-
-footer {
-    grid-area: footer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--color-main);
 }
 
 /* Elements */ 
