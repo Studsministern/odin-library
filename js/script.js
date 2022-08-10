@@ -14,8 +14,8 @@ function validateForm(e) {
         resetInputs();
         hideForm();
     } else {
-        labels.forEach(label => {
-            const input = label.querySelector('input');
+        inputLabels.forEach(inputLabel => {
+            const input = inputLabel.querySelector('input');
             
             if(!input.checkValidity()) {
                 input.classList.add('error');
@@ -72,8 +72,8 @@ function checkPagesValidity(input) {
 }
 
 function resetInputs() {
-    labels.forEach(label => {
-        const input = label.querySelector('input');
+    inputLabels.forEach(inputLabel => {
+        const input = inputLabel.querySelector('input');
         input.value = '';
         input.removeAttribute('class');
     });
@@ -138,10 +138,10 @@ function hideForm() {
 const openFormButton = document.querySelector('.open-form');
 const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('form');
-const labels = form.querySelectorAll('label.input-label');
+const inputLabels = form.querySelectorAll('label.input-label');
 const select = form.querySelector('label select');
-const submit = form.querySelector('[type="submit"]');
-const cancel = form.querySelector('button.cancel');
+const submitButton = form.querySelector('button[type="submit"]');
+const cancelButton = form.querySelector('button.cancel');
 form.noValidate = true; // Prevents submitting before validation
 
 const bookList = document.querySelector('.book-list');
@@ -152,14 +152,14 @@ let myLibrary = [];
 /* Event listeners */
 openFormButton.addEventListener('click', showForm);
 
-labels.forEach(label => {
-    const input = label.querySelector('input');
+inputLabels.forEach(inputLabel => {
+    const input = inputLabel.querySelector('input');
 
     if(input.id === 'pages') {
-        label.addEventListener('focusout', () => validatePagesLabelFocusOut(input));
+        inputLabel.addEventListener('focusout', () => validatePagesLabelFocusOut(input));
         input.addEventListener('input', () => validatePagesInputChange(input));
     } else {
-        label.addEventListener('focusout', () => validateLabelFocusOut(input));
+        inputLabel.addEventListener('focusout', () => validateLabelFocusOut(input));
         input.addEventListener('input', () => validateInputChange(input));
     }
 });
@@ -169,9 +169,9 @@ select.addEventListener('change', () => {
     else                        select.classList.remove('error');
 });
 
-submit.addEventListener('click', validateForm);
+submitButton.addEventListener('click', validateForm);
 
-cancel.addEventListener('click', () => {
+cancelButton.addEventListener('click', () => {
     resetInputs();
     hideForm();
 });
