@@ -28,8 +28,7 @@ body {
     grid: "header                   header header"                   var(--row-height)
           ".                        form   ."                        min-content
           ".                        list   ."                        auto
-        / var(--side-column-width)  1fr    var(--side-column-width);
-    justify-content: space-between;
+        / var(--side-column-width)  calc(100vw - 2 * var(--side-column-width))   var(--side-column-width);
     font: 16px black Roboto, Helvetica, sans-serif;
     background: var(--bg-color-main);
 }
@@ -39,13 +38,20 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 var(--side-column-width) var(--gap-medium) var(--side-column-width);
+    padding: 0 calc(var(--side-column-width) + var(--gap-large)) var(--gap-medium) calc(var(--side-column-width) + var(--gap-large));
     background: var(--color-main);
     font-weight: 700;
 }
 
 .logo {
+    min-width: 10ch;
     font-size: 2rem;
+}
+
+header a {
+    min-width: 12ch;
+    text-align: end;
+    font-size: .8rem;
 }
 
 form {
@@ -54,7 +60,8 @@ form {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--gap-small);
-    padding: var(--gap-medium) 0;
+    padding: var(--gap-medium) var(--gap-large);
+    background: var(--color-main-semi-transparent);
 }
 
 div.inputs {
@@ -68,20 +75,24 @@ label {
     flex-direction: column;
 }
 
-label[for="title"] {
+label[for="title"],
+.title {
     width: 25%;
 }
 
-label[for="author"] {
+label[for="author"],
+.author {
     width: 25%;
 }
 
-label[for="pages"] {
+label[for="pages"],
+.pages {
     width: 20%;
 }
 
-label[for="read"] {
-    align-items: flex-end;
+label[for="read"],
+.read {
+    align-items: center;
     width: 10%;
 }
 
