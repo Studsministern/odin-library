@@ -54,6 +54,7 @@ body {
     background: var(--bg-color-main);
 }
 
+/* Header */
 header {
     grid-area: header;
     display: flex;
@@ -73,6 +74,19 @@ header a {
     min-width: 12ch;
     text-align: end;
     font-size: .8rem;
+}
+
+header a span.link {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+header a span.link:hover {
+    color: var(--color-secondary-hover);
+}
+
+header a span.link:active {
+    color: var(--color-secondary-active);
 }
 
 /* List and list header */
@@ -131,14 +145,20 @@ header a {
 button.open-form {
     width: 3rem;
     height: 3rem;
-    font-size: 2rem;
     border: none;
     border-radius: 3rem;
-    background: var(--color-main);
+    background: var(--color-secondary);
+    font-size: 2rem;
+    color: var(--color-main);
+    cursor: pointer;
 }
 
 button.open-form:hover {
-    background: var(--color-main);
+    background: var(--color-secondary-hover);
+}
+
+button.open-form:active {
+    background: var(--color-secondary-active);
 }
 
 /* Form pop-up */
