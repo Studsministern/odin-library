@@ -7,7 +7,7 @@
     --bg-color-main: #EEE;
 
     --side-column-width: 10vw;
-    --row-height: 5rem;
+    --row-height: 6rem;
 
     --gap-large: 2rem;
     --gap-medium: 1rem;
@@ -28,7 +28,8 @@ body {
     display: grid;
     grid: "header                   header header"                   var(--row-height)
           ".                        form   ."                        min-content
-          ".                        list   ."                        auto
+          ".                        list   ."                        min-content
+          ".                        .      ."                        minmax(var(--row-height), auto)
         / var(--side-column-width)  calc(100vw - 2 * var(--side-column-width))   var(--side-column-width);
     font: 16px black Roboto, Helvetica, sans-serif;
     background: var(--bg-color-main);
@@ -38,8 +39,8 @@ header {
     grid-area: header;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    padding: 0 calc(var(--side-column-width) + var(--gap-large)) var(--gap-medium) calc(var(--side-column-width) + var(--gap-large));
+    align-items: center;
+    padding: 0 calc(var(--side-column-width) + var(--gap-large));
     background: var(--color-main);
     font-weight: 700;
 }
@@ -120,7 +121,8 @@ button[type="submit"] {
 .book-list {
     grid-area: list;
     display: flex;
-    flex-direction: column;}
+    flex-direction: column;
+}
 
 .book-list > * {
     display: flex;
