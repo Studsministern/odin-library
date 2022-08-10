@@ -3,6 +3,7 @@
 :root {
     --color-main: #FFF;
     --color-main-semi-transparent: rgba(255, 255, 255, 0.4);
+    --color-shadow: #DDD;
     --bg-color-main: #EEE;
 
     --side-column-width: 10vw;
@@ -126,6 +127,34 @@ button[type="submit"] {
     justify-content: space-between;
     padding: var(--gap-medium) var(--gap-large);
     background: var(--color-main-semi-transparent);
+}
+
+/* Shadows */
+.bottom-shadow {
+    box-shadow: 0 .3rem .3rem var(--color-shadow);
+}
+
+.side-shadows {
+    position: relative;
+}
+
+.side-shadows:before,
+.side-shadows:after {
+    content: " ";
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 1rem;
+}
+
+.side-shadows:before {
+    box-shadow: -1rem 0 1rem -1rem inset var(--color-shadow);
+    left: -1rem;
+}
+
+.side-shadows:after {
+    box-shadow: 1rem 0 1rem -1rem inset var(--color-shadow);
+    right: -1rem;
 }
 
 /* Elements */ 
