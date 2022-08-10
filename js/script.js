@@ -112,7 +112,7 @@ function addBookToLibrary(book) {
 
     const bookRead = document.createElement('p');
     bookRead.classList.add('read');
-    bookRead.textContent = book.read;
+    bookRead.textContent = book.read ? 'Read' : 'Not read';
     bookElement.appendChild(bookRead);
 
     bookList.appendChild(bookElement);
