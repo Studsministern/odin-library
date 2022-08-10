@@ -155,12 +155,12 @@ openFormButton.addEventListener('click', showForm);
 labels.forEach(label => {
     const input = label.querySelector('input');
 
-    if(input.id !== 'pages') {
-        label.addEventListener('focusout', () => validateLabelFocusOut(input));
-        input.addEventListener('input', () => validateInputChange(input));
-    } else {
+    if(input.id === 'pages') {
         label.addEventListener('focusout', () => validatePagesLabelFocusOut(input));
         input.addEventListener('input', () => validatePagesInputChange(input));
+    } else {
+        label.addEventListener('focusout', () => validateLabelFocusOut(input));
+        input.addEventListener('input', () => validateInputChange(input));
     }
 });
 
