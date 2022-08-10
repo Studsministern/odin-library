@@ -7,9 +7,9 @@ function validateForm(e) {
         const title = form.querySelector('#title').value;
         const author = form.querySelector('#author').value;
         const pages = form.querySelector('#pages').value;
-        const read = form.querySelector('#read').checked;
+        const status = form.querySelector('#status').checked;
 
-        const book = new Book(title, author, pages, read);
+        const book = new Book(title, author, pages, status);
         addBookToLibrary(book);
         resetInputs();
     } else {
@@ -76,13 +76,13 @@ function resetInputs() {
 }
 
 /* Library functions */
-function Book(title, author, pages, read) {
+function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    this.status = status;
     this.info = function() {
-        return `${title} by ${author}, ${pages} pages, ${(read ? 'read' : 'not read yet')}.`;
+        return `${title} by ${author}, ${pages} pages, ${(status ? 'read' : 'not read yet')}.`;
     };
 }
 
@@ -110,10 +110,10 @@ function addBookToLibrary(book) {
     bookPages.textContent = book.pages;
     bookElement.appendChild(bookPages);
 
-    const bookRead = document.createElement('p');
-    bookRead.classList.add('read');
-    bookRead.textContent = book.read ? 'Read' : 'Not read';
-    bookElement.appendChild(bookRead);
+    const bookStatus = document.createElement('p');
+    bookStatus.classList.add('status');
+    bookStatus.textContent = book.status ? 'Read' : 'Not read';
+    bookElement.appendChild(bookStatus);
 
     bookList.appendChild(bookElement);
 }
