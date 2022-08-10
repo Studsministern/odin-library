@@ -203,11 +203,13 @@ label {
     flex-direction: column;
 }
 
-input {
+input,
+select {
     margin-top: var(--gap-small);
 }
 
-input.error ~ .error-message {
+input.error ~ .error-message,
+select.error ~ .error-message {
     height: min-content;
     visibility: visible;
 }

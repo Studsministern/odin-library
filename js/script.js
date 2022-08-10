@@ -2,12 +2,12 @@
 function validateForm(e) {
     e.preventDefault(); // Cancel submitting and refreshing the page
 
-    if(form.checkValidity()) {
+    if(form.checkValidity() && select.value !== 'null') {
         // Form is valid, add a new book
         const title = form.querySelector('#title').value;
         const author = form.querySelector('#author').value;
         const pages = form.querySelector('#pages').value;
-        const status = form.querySelector('#status').checked;
+        const status = (form.querySelector('#status').value === 'true') ? true : false; // Converts from string to Boolean
 
         const book = new Book(title, author, pages, status);
         addBookToLibrary(book);
@@ -22,6 +22,10 @@ function validateForm(e) {
                 input.classList.add('hasError');
             }
         });
+
+        if(select.value === 'null') {
+            select.classList.add('error');
+        }
     }
 }
 
@@ -72,8 +76,10 @@ function resetInputs() {
         const input = label.querySelector('input');
         input.value = '';
         input.removeAttribute('class');
-        input.checked = false;
     });
+
+    select.value = 'null';
+    select.removeAttribute('class');
 }
 
 /* Library functions */
@@ -132,7 +138,8 @@ function hideForm() {
 const openFormButton = document.querySelector('.open-form');
 const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('form');
-const labels = form.querySelectorAll('label');
+const labels = form.querySelectorAll('label.input-label');
+const select = form.querySelector('label select');
 const submit = form.querySelector('[type="submit"]');
 const cancel = form.querySelector('button.cancel');
 form.noValidate = true; // Prevents submitting before validation
@@ -155,6 +162,11 @@ labels.forEach(label => {
         label.addEventListener('focusout', () => validatePagesLabelFocusOut(input));
         input.addEventListener('input', () => validatePagesInputChange(input));
     }
+});
+
+select.addEventListener('change', () => {
+    if(select.value === 'null') select.classList.add('error');
+    else                        select.classList.remove('error');
 });
 
 submit.addEventListener('click', validateForm);

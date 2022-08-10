@@ -43,27 +43,32 @@
             <legend>Add a book to your library:</legend>
 
             <div class="inputs">
-                <label for="title">
+                <label for="title" class="input-label">
                     <div>Title<span aria-label="required">*</span></div>
                     <input type="text" id="title" name="title" placeholder=" " required="" pattern="^\S(.*\S)*$" autofocus>
                     <span class="error-message">Please input a title that doesn't start or end with a space.</span>
                 </label>
     
-                <label for="author">
+                <label for="author" class="input-label">
                     <div>Author<span aria-label="required">*</span></div>
                     <input type="text" id="author" name="author" placeholder=" " required="" pattern="^[^\d\s]+(\s([^\d\s]+))*$">
                     <span class="error-message">Please input a name without any digits (make sure spaces are only used between words).</span>
                 </label>
     
-                <label for="pages">
+                <label for="pages" class="input-label">
                     <div>Pages<span aria-label="required">*</span></div>
                     <input type="number" id="pages" name="pages" placeholder=" " required="" min="1" step="1">
                     <span class="error-message">Please input a whole number that doesn't start with 0.</span>
                 </label>
     
                 <label for="status">
-                    <div>Read?</div>
-                    <input type="checkbox" id="status" name="status">
+                    <div>Status<span aria-label="required">*</span></div>
+                    <select id="status" name="status" required="">
+                        <option value="null" disabled selected>Have you read the book?</option>
+                        <option value="true">Read</option>
+                        <option value="false">Not read</option>
+                    </select>
+                    <span class="error-message">Please select an option.</span>
                 </label>
             </div>
     
