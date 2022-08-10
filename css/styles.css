@@ -140,7 +140,7 @@ header a span.link:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--gap-medium);
+    padding-top: var(--gap-large);
 }
 
 button.open-form {
