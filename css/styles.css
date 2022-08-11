@@ -164,7 +164,7 @@ button.open-form:active {
 
 /* Form pop-up */
 .form-container {
-    position: absolute;
+    position: fixed;
     inset: 0;
     display: flex;
     justify-content: center;
