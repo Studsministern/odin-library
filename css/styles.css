@@ -226,8 +226,6 @@ legend {
 }
 
 .top-form-div .close {
-    width: 1.3rem;
-    height: 1.3rem;
     background: var(--color-main);
     font-size: 1.3rem;
 }
