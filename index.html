@@ -40,7 +40,10 @@
 
     <div class="form-container hidden">
         <form id="add-books-form" method="POST" action="#">
-            <legend>Add a book to your library:</legend>
+            <div class="top-form-div">
+                <legend>Add a book to your library:</legend>
+                <button type="button" class="close">X</button>
+            </div>
 
             <div class="inputs">
                 <label for="title" class="input-label">
@@ -72,10 +75,7 @@
                 </label>
             </div>
     
-            <div class="form-buttons">
-                <button type="submit">Add book</button>
-                <button type="button" class="cancel">Cancel</button>
-            </div>
+            <button type="submit">Add book</button>
         </form>
     </div>
 </body>

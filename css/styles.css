@@ -191,6 +191,21 @@ legend {
     font-weight: 700;
 }
 
+.top-form-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-form-div .close {
+    width: 1.3rem;
+    height: 1.3rem;
+    border: none;
+    background: var(--color-main);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
 div.inputs {
     width: 100%;
     display: flex;
@@ -221,14 +236,7 @@ select.error ~ .error-message {
     visibility: hidden;
 }
 
-.form-buttons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-button[type="submit"],
-button.cancel {
+button[type="submit"] {
     padding: var(--gap-small) var(--gap-large);
 }
 

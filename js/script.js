@@ -141,7 +141,7 @@ const form = document.querySelector('form');
 const inputLabels = form.querySelectorAll('label.input-label');
 const select = form.querySelector('label select');
 const submitButton = form.querySelector('button[type="submit"]');
-const cancelButton = form.querySelector('button.cancel');
+const closeButton = form.querySelector('button.close');
 form.noValidate = true; // Prevents submitting before validation
 
 const bookList = document.querySelector('.book-list');
@@ -171,7 +171,7 @@ select.addEventListener('change', () => {
 
 submitButton.addEventListener('click', validateForm);
 
-cancelButton.addEventListener('click', () => {
+closeButton.addEventListener('click', () => {
     resetInputs();
     hideForm();
 });
