@@ -10,9 +10,10 @@ function validateForm(e) {
         const status = (form.querySelector('#status').value === 'true') ? true : false; // Converts from string to Boolean
 
         const book = new Book(title, author, pages, status);
-        addBookToLibrary(book);
-        resetInputs();
-        hideForm();
+        if(addBookToLibrary(book)) {
+            resetInputs();
+            hideForm();
+        }
     } else {
         inputLabels.forEach(inputLabel => {
             const input = inputLabel.querySelector('input');
@@ -74,46 +75,56 @@ function checkPagesValidity(input) {
 
 
 /* Library functions */
+function addBookToLibrary(book) {
+    if(!(book instanceof Book)) {
+        throw Error("Not a book!");
+    }
+    if (library.some(e => e.title.toLowerCase() === book.title.toLowerCase())) {
+        /* library already contains book with the same title (case insensitive) */
+        return false;
+      }
+    library.push(book);
+    displayBook(book);
+    return true;
+}
+
+function displayBook(book) {
+    bookList.insertAdjacentHTML('beforeEnd', book.htmlMarkup);
+}
+
+function displayBookList() {
+    /* Clears the list */
+    bookList.forEach(e => {
+        bookList.remove(e);
+    });
+    
+    /* Readds the elements */
+    library.forEach(book => {
+       displayBook(book); 
+    });
+}
+
+
+
+/* Book function */
 function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.status = status;
-    this.info = function() {
-        return `${title} by ${author}, ${pages} pages, ${(status ? 'read' : 'not read yet')}.`;
-    };
-}
+    
+    this.htmlMarkup = `
+        <div class="book">
+            <p class="title">${this.title}</p>
+            <p class="author">${this.author}</p>
+            <p class="pages">${this.pages}</p>
+            <p class="status">${this.status ? 'Read' : 'Not read'}</p>
+        </div>
+        `;
 
-function addBookToLibrary(book) {
-    if(!(book instanceof Book)) {
-        throw Error("Not a book!");
+    this.toggleStatus = function() {
+        this.status = !this.status;
     }
-    myLibrary.push(book);
-
-    const bookElement = document.createElement('div');
-    bookElement.classList.add('book');
-
-    const bookTitle = document.createElement('p');
-    bookTitle.classList.add('title');
-    bookTitle.textContent = book.title;
-    bookElement.appendChild(bookTitle);
-
-    const bookAuthor = document.createElement('p');
-    bookAuthor.classList.add('author');
-    bookAuthor.textContent = book.author;
-    bookElement.appendChild(bookAuthor);
-
-    const bookPages = document.createElement('p');
-    bookPages.classList.add('pages');
-    bookPages.textContent = book.pages;
-    bookElement.appendChild(bookPages);
-
-    const bookStatus = document.createElement('p');
-    bookStatus.classList.add('status');
-    bookStatus.textContent = book.status ? 'Read' : 'Not read';
-    bookElement.appendChild(bookStatus);
-
-    bookList.appendChild(bookElement);
 }
 
 
@@ -156,7 +167,9 @@ form.noValidate = true; // Prevents submitting before validation
 
 
 /* Variables */
-let myLibrary = [];
+let library = [
+    new Book('The Intelligent Investor', 'Benjamin Graham', '587', false)
+];
 
 
 
