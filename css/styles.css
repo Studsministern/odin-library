@@ -147,10 +147,10 @@ header a span.link:active {
 button.open-form {
     width: 3rem;
     height: 3rem;
-    border: none;
     border-radius: 3rem;
     background: var(--color-secondary);
     font-size: 2rem;
+    font-weight: 500;
     color: var(--color-main);
 }
 
@@ -199,7 +199,6 @@ legend {
 .top-form-div .close {
     width: 1.3rem;
     height: 1.3rem;
-    border: none;
     background: var(--color-main);
     font-size: 1.3rem;
 }
@@ -235,7 +234,19 @@ select.error ~ .error-message {
 }
 
 button[type="submit"] {
-    padding: var(--gap-small) var(--gap-large);
+    align-self: center;
+    border-radius: .5rem;
+    background: var(--color-secondary);
+    color: var(--color-main);
+    padding: calc((var(--gap-small) + var(--gap-medium)) / 2) var(--gap-large);
+}
+
+button[type="submit"]:hover {
+    background: var(--color-secondary-hover);
+}
+
+button[type="submit"]:active {
+    background: var(--color-secondary-active);
 }
 
 /* Shadows */
@@ -277,4 +288,6 @@ a {
 
 button {
     cursor: pointer;
+    border: none;
+    font-weight: 700;
 }
