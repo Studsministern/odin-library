@@ -71,16 +71,7 @@ function checkPagesValidity(input) {
     return /^[1-9]\d*$/.test(input.value); // RegExp testing
 }
 
-function resetInputs() {
-    inputLabels.forEach(inputLabel => {
-        const input = inputLabel.querySelector('input');
-        input.value = '';
-        input.removeAttribute('class');
-    });
 
-    select.value = 'null';
-    select.removeAttribute('class');
-}
 
 /* Library functions */
 function Book(title, author, pages, status) {
@@ -125,7 +116,9 @@ function addBookToLibrary(book) {
     bookList.appendChild(bookElement);
 }
 
-/* Show and hide form functions */
+
+
+/* Form functions */
 function showForm() {
     formContainer.classList.remove('hidden');
 }
@@ -134,8 +127,24 @@ function hideForm() {
     formContainer.classList.add('hidden');
 }
 
+function resetInputs() {
+    inputLabels.forEach(inputLabel => {
+        const input = inputLabel.querySelector('input');
+        input.value = '';
+        input.removeAttribute('class');
+    });
+
+    select.value = 'null';
+    select.removeAttribute('class');
+}
+
+
+
 /* DOM variables */
+const bookList = document.querySelector('.book-list');
+
 const openFormButton = document.querySelector('.open-form');
+
 const formContainer = document.querySelector('.form-container');
 const form = document.querySelector('form');
 const inputLabels = form.querySelectorAll('label.input-label');
@@ -144,10 +153,12 @@ const submitButton = form.querySelector('button[type="submit"]');
 const closeButton = form.querySelector('button.close');
 form.noValidate = true; // Prevents submitting before validation
 
-const bookList = document.querySelector('.book-list');
+
 
 /* Variables */
 let myLibrary = [];
+
+
 
 /* Event listeners */
 openFormButton.addEventListener('click', showForm);

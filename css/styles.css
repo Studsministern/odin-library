@@ -1,5 +1,16 @@
+            /*****************************
+            
+                    BASIC SETTINGS:
+            
+            - Imports
+            - Variables
+            - Global reset
+
+            *****************************/
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+/* Variables */
 :root {
     --side-column-width: 10vw;
     --row-height: 6rem;
@@ -30,6 +41,7 @@
     --bg-color-main: #EEE;
 }
 
+/* Global reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -39,6 +51,30 @@
     font-weight: inherit;
     color: inherit;
 }
+
+
+
+            /*****************************
+            
+                  DOCUMENT STRUCTURE:
+            
+            Body
+                Header
+                    Logo
+                    Link
+                List headers
+                Book list
+                    Book
+                    Book
+                    ...
+                Add book
+                Form (Hidden, activated by Add book button)
+                    Top part
+                    Inputs and select
+                        Error messages
+                    Submit button
+
+            *****************************/
 
 body {
     min-height: 100vh;
@@ -55,7 +91,9 @@ body {
     background: var(--bg-color-main);
 }
 
-/* Header */
+
+
+            /********** HEADER **********/
 header {
     grid-area: header;
     display: flex;
@@ -66,11 +104,13 @@ header {
     font-weight: 700;
 }
 
+/* Logo */
 .logo {
     min-width: 10ch;
     font-size: 2rem;
 }
 
+/* Link */
 header a {
     min-width: 12ch;
     text-align: end;
@@ -90,7 +130,9 @@ header a span.link:active {
     color: var(--color-secondary-active);
 }
 
-/* List and list header */
+
+
+            /********** LIST HEADERS **********/
 .list-headers {
     height: 0;
     min-height: 100%;
@@ -104,6 +146,9 @@ header a span.link:active {
     font-weight: 700;
 }
 
+
+
+            /********** BOOK LIST **********/
 .book-list {
     grid-area: list;
     display: flex;
@@ -112,30 +157,15 @@ header a span.link:active {
     padding-bottom: var(--gap-medium);
 }
 
-.book-list > * {
+.book {
     display: flex;
     justify-content: space-between;
     padding: var(--gap-medium) var(--gap-large);
 }
 
-.title {
-    width: 25%;
-}
 
-.author {
-    width: 25%;
-}
 
-.pages {
-    width: 20%;
-}
-
-.status {
-    text-align: end;
-    width: 10%;
-}
-
-/* Add book div and button */
+            /********** ADD BOOK **********/
 .add-book {
     grid-area: add-book-button;
     display: flex;
@@ -162,18 +192,16 @@ button.open-form:active {
     background: var(--color-secondary-active);
 }
 
-/* Form pop-up */
+
+
+            /********** FORM **********/
 .form-container {
     position: fixed;
-    inset: 0;
+    inset: 0; /* Fills the entire screen */
     display: flex;
     justify-content: center;
     align-items: center;
     background: rgba(146, 146, 146, 0.5);
-}
-
-.hidden {
-    visibility: hidden;
 }
 
 form {    
@@ -185,15 +213,16 @@ form {
     background: var(--color-main);
 }
 
-legend {
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
+/* Top part */
 .top-form-div {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+legend {
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .top-form-div .close {
@@ -203,6 +232,7 @@ legend {
     font-size: 1.3rem;
 }
 
+/* Inputs and select */
 div.inputs {
     width: 100%;
     display: flex;
@@ -220,6 +250,7 @@ select {
     margin-top: var(--gap-small);
 }
 
+/* Error messages */
 input.error ~ .error-message,
 select.error ~ .error-message {
     height: min-content;
@@ -233,6 +264,7 @@ select.error ~ .error-message {
     visibility: hidden;
 }
 
+/* Submit button */
 button[type="submit"] {
     align-self: center;
     border-radius: .5rem;
@@ -249,7 +281,18 @@ button[type="submit"]:active {
     background: var(--color-secondary-active);
 }
 
-/* Shadows */
+
+
+            /*****************************
+            
+                    COMMON STYLING:
+            
+            - Shadows
+            - Property widths
+            - Hiding elements
+
+            *****************************/
+
 .top-shadow {
     box-shadow: 0 -.3rem .3rem var(--color-shadow);
 }
@@ -281,7 +324,37 @@ button[type="submit"]:active {
     right: -1rem;
 }
 
-/* Elements */ 
+/* Propety widths */
+.title {
+    width: 25%;
+}
+
+.author {
+    width: 25%;
+}
+
+.pages {
+    width: 20%;
+}
+
+.status {
+    text-align: end;
+    width: 10%;
+}
+
+/* Hiding elements */
+.hidden {
+    visibility: hidden;
+}
+
+
+
+            /*****************************
+            
+                      ELEMENTS:
+
+            *****************************/
+
 a {
     text-decoration: none;
 }
