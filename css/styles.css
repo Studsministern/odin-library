@@ -152,7 +152,6 @@ button.open-form {
     background: var(--color-secondary);
     font-size: 2rem;
     color: var(--color-main);
-    cursor: pointer;
 }
 
 button.open-form:hover {
@@ -203,7 +202,6 @@ legend {
     border: none;
     background: var(--color-main);
     font-size: 1.3rem;
-    cursor: pointer;
 }
 
 div.inputs {
@@ -275,4 +273,8 @@ button[type="submit"] {
 /* Elements */ 
 a {
     text-decoration: none;
+}
+
+button {
+    cursor: pointer;
 }
