@@ -249,13 +249,15 @@ select {
 }
 
 /* Error messages */
-input.error ~ .error-message,
-select.error ~ .error-message {
+input.error ~ .error-message.misinput,
+#title.copy-error ~ .error-message.copy-error,
+select.error ~ .error-message.misinput {
     height: min-content;
     visibility: visible;
 }
 
 .error-message {
+    height: 0;
     font-size: .6rem;
     color: red;
     height: var(--gap-small);

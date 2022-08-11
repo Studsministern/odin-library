@@ -4,15 +4,24 @@ function validateForm(e) {
 
     if(form.checkValidity() && select.value !== 'null') {
         // Form is valid, add a new book
-        const title = form.querySelector('#title').value;
-        const author = form.querySelector('#author').value;
-        const pages = form.querySelector('#pages').value;
-        const status = (form.querySelector('#status').value === 'true') ? true : false; // Converts from string to Boolean
+        const title = form.querySelector('#title');
+        const author = form.querySelector('#author');
+        const pages = form.querySelector('#pages');
+        const status = form.querySelector('#status'); 
 
-        const book = new Book(title, author, pages, status);
-        if(addBookToLibrary(book)) {
+        const book = new Book(
+            title.value, 
+            author.value, 
+            pages.value, 
+            ((status.value === 'true') ? true : false) // Converts from string to Boolean
+        );
+
+        if(existsIdenticalTitle(title)) {
+            addBookToLibrary(book)
             resetInputs();
             hideForm();
+        } else {
+            title.classList.add('copy-error');
         }
     } else {
         inputLabels.forEach(inputLabel => {
@@ -33,9 +42,27 @@ function validateForm(e) {
 function validateLabelFocusOut(input) {
     if(input.checkValidity()) {
         input.classList.remove('hasError'); // Resets to lazy validation
-    } else if(input.value !== '' && !input.checkValidity()) {
+    } else if(input.value === '' || !input.checkValidity()) {
         input.classList.add('error');
         input.classList.add('hasError');    // Activates aggressive validation
+    }
+
+    if(input.id === 'title') {
+        if(existsIdenticalTitle(input.value)) {
+            input.classList.add('copy-error');
+            input.classList.add('hasError');
+        } else if(input.checkValidity()){ // Only removes hasError if both checks are correct
+            input.classList.remove('hasError');
+        }                                 
+    }
+
+    if(input.id === 'pages') {
+        if(checkPagesValidity(input.value) && input.checkValidity()) { // Only removes hasError if both checks are correct
+            input.classList.remove('hasError');
+        } else if(!checkPagesValidity(input.value)) {
+            input.classList.add('error');
+            input.classList.add('hasError');
+        }
     }
 }
 
@@ -46,30 +73,35 @@ function validateInputChange(input) { // Aggressive validation on every button p
         } else {
             input.classList.add('error');
         }
-    }
-}
+        
+        if(input.id === 'title') {
+            if(existsIdenticalTitle(input.value)) {
+                input.classList.add('copy-error');
+            } else {
+                input.classList.remove('copy-error');
+            }
+        }
 
-function validatePagesLabelFocusOut(input) { // Version of validateLabelFocusOut but for #pages
-    if(checkPagesValidity(input)) {
-        input.classList.remove('hasError');
-    } else if(input.value !== '' && !checkPagesValidity(input)) {
-        input.classList.add('error');
-        input.classList.add('hasError');
-    }
-}
-
-function validatePagesInputChange(input) { // Version of validateInputChange but for #pages
-    if(input.className.includes('hasError')) {
-        if(checkPagesValidity(input)) {
-            input.classList.remove('error');
-        } else {
-            input.classList.add('error');
+        if(input.id === 'pages') {
+            if(checkPagesValidity(input.value)) {
+                input.classList.remove('error');
+            } else {
+                input.classList.add('error');
+            }
         }
     }
 }
 
-function checkPagesValidity(input) {
-    return /^[1-9]\d*$/.test(input.value); // RegExp testing
+function existsIdenticalTitle(title) {
+    if (library.some(e => e.title.toLowerCase() === title.toLowerCase())) {
+        /* library already contains book with the same title (case insensitive) */
+        return true;
+    }
+    return false;
+}
+
+function checkPagesValidity(pages) {
+    return /^[1-9]\d*$/.test(pages); // RegExp testing
 }
 
 
@@ -79,13 +111,8 @@ function addBookToLibrary(book) {
     if(!(book instanceof Book)) {
         throw Error("Not a book!");
     }
-    if (library.some(e => e.title.toLowerCase() === book.title.toLowerCase())) {
-        /* library already contains book with the same title (case insensitive) */
-        return false;
-      }
     library.push(book);
     displayBook(book);
-    return true;
 }
 
 function displayBook(book) {
@@ -178,14 +205,9 @@ openFormButton.addEventListener('click', showForm);
 
 inputLabels.forEach(inputLabel => {
     const input = inputLabel.querySelector('input');
-
-    if(input.id === 'pages') {
-        inputLabel.addEventListener('focusout', () => validatePagesLabelFocusOut(input));
-        input.addEventListener('input', () => validatePagesInputChange(input));
-    } else {
-        inputLabel.addEventListener('focusout', () => validateLabelFocusOut(input));
-        input.addEventListener('input', () => validateInputChange(input));
-    }
+    
+    inputLabel.addEventListener('focusout', () => validateLabelFocusOut(input));
+    input.addEventListener('input', () => validateInputChange(input));
 });
 
 select.addEventListener('change', () => {
