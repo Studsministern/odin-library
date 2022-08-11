@@ -16,12 +16,12 @@ function validateForm(e) {
             ((status.value === 'true') ? true : false) // Converts from string to Boolean
         );
 
-        if(existsIdenticalTitle(title)) {
+        if(existsIdenticalTitle(title.value)) {
+            title.classList.add('copy-error');
+        } else {
             addBookToLibrary(book)
             resetInputs();
             hideForm();
-        } else {
-            title.classList.add('copy-error');
         }
     } else {
         inputLabels.forEach(inputLabel => {
