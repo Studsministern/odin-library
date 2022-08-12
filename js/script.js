@@ -158,13 +158,7 @@ function removeBook(book) {
     }
 
     // Remove from DOM
-    bookList.querySelectorAll('.book').forEach(e => {
-        const title = e.querySelector('.title');
-        if(title.textContent === book.title) {
-            e.remove();
-            return; // Unique titles means only one has to be removed
-        }
-    });
+    bookList.querySelector(`.book[title="${book.title}"]`).remove();
 }
 
 
@@ -177,7 +171,7 @@ function Book(title, author, pages, status) {
     this.status = status;
     
     this.htmlMarkup = `
-        <div class="book">
+        <div class="book" title="${this.title}">
             <p class="title">${this.title}</p>
             <p class="author">${this.author}</p>
             <p class="pages">${this.pages}</p>
