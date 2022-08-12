@@ -194,10 +194,8 @@ form.noValidate = true; // Prevents submitting before validation
 
 
 /* Variables */
-let library = [
-    new Book('The Intelligent Investor', 'Benjamin Graham', '587', false)
-];
-
+let library = [];
+addBookToLibrary(new Book('The Intelligent Investor', 'Benjamin Graham', '587', false));
 
 
 /* Event listeners */
