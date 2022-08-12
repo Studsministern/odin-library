@@ -19,7 +19,7 @@ function validateForm(e) {
         if(existsIdenticalTitle(title.value)) {
             title.classList.add('copy-error');
         } else {
-            addBookToLibrary(book)
+            addBook(book)
             resetInputs();
             hideForm();
         }
@@ -107,7 +107,7 @@ function checkPagesValidity(pages) {
 
 
 /* Library functions */
-function addBookToLibrary(book) {
+function addBook(book) {
     if(!(book instanceof Book)) {
         throw Error("Not a book!");
     }
@@ -203,7 +203,7 @@ form.noValidate = true; // Prevents submitting before validation
 
 /* Variables */
 let library = [];
-addBookToLibrary(new Book('The Intelligent Investor', 'Benjamin Graham', '587', false));
+addBook(new Book('The Intelligent Investor', 'Benjamin Graham', '587', false));
 
 
 /* Event listeners */
