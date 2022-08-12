@@ -119,7 +119,7 @@ function displayBook(book) {
     bookList.insertAdjacentHTML('beforeEnd', book.htmlMarkup);
     const statusButton = bookList.querySelector(':last-child > .status > button'); // Find the most recently added button
     
-    statusButton.addEventListener('mousedown', () => { // Toggle status and update textContent on click
+    statusButton.addEventListener('click', () => { // Toggle status and update textContent on click
         book.toggleStatus();
         statusButton.textContent = (book.status) ? 'Read' : 'Not read';
     });
