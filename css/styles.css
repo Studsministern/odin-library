@@ -165,7 +165,24 @@ header a span.link:active {
 
 .book .status button {
     background: inherit;
-    font-weight: 500;
+    font-weight: initial;
+}
+
+.book .remove button {
+    width: 1.2rem;
+    height: 1.2rem;
+    font-size: .8rem;
+    border-radius: .2rem;
+    background: inherit;
+}
+
+.book .remove button:hover {
+    background: rgb(255, 73, 73);
+    color: var(--color-main);
+}
+
+.book .remove button:active {
+    background: rgb(255, 50, 50);
 }
 
 
@@ -347,6 +364,11 @@ button[type="submit"]:active {
     width: 10%;
 }
 
+.remove {
+    text-align: end;
+    width: 5%;
+}
+
 /* Hiding elements */
 .hidden {
     visibility: hidden;
@@ -372,7 +394,7 @@ button {
 
 button:hover {
     transform: scale(1.05);
-    transition: transform .1s;
+    transition: all .1s;
 }
 
 button:active {

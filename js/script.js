@@ -117,11 +117,18 @@ function addBook(book) {
 
 function displayBook(book) {
     bookList.insertAdjacentHTML('beforeEnd', book.htmlMarkup);
-    const statusButton = bookList.querySelector(':last-child > .status > button'); // Find the most recently added button
-    
-    statusButton.addEventListener('click', () => { // Toggle status and update textContent on click
+
+    const statusButton = bookList.querySelector(':last-child > .status > button'); // Find the recently added status button
+    statusButton.addEventListener('click', () => {                                 // Toggle status and update textContent on click
         book.toggleStatus();
         statusButton.textContent = (book.status) ? 'Read' : 'Not read';
+    });
+
+    const removeButton = bookList.querySelector(':last-child > .remove > button'); // Find the recently added remove button
+    removeButton.addEventListener('click', () => {                                 // Ask the user to confirm, and remove the book if accepted
+        if(confirm(`Are you sure you want to remove ${book.title}?`)) {
+            removeBook(book);
+        }
     });
 }
 
@@ -134,6 +141,29 @@ function displayBookList() {
     /* Readds the elements */
     library.forEach(book => {
        displayBook(book); 
+    });
+}
+
+function removeBook(book) {
+    if(!(book instanceof Book)) {
+        throw Error("Not a book!");
+    }
+    
+    // Remove from library
+    for(let i = 0; i < library.length; i++) {
+        if(library[i].title === book.title) {
+            library.splice(i, 1);
+            break; // Unique titles means only one has to be removed
+        }
+    }
+
+    // Remove from DOM
+    bookList.querySelectorAll('.book').forEach(e => {
+        const title = e.querySelector('.title');
+        if(title.textContent === book.title) {
+            e.remove();
+            return; // Unique titles means only one has to be removed
+        }
     });
 }
 
@@ -153,6 +183,9 @@ function Book(title, author, pages, status) {
             <p class="pages">${this.pages}</p>
             <div class="status">
                 <button>${this.status ? 'Read' : 'Not read'}</button>
+            </div>
+            <div class="remove">
+                <button>x</button>
             </div>
         </div>
         `;
