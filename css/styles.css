@@ -163,6 +163,21 @@ header a span.link:active {
     padding: var(--gap-medium) var(--gap-large);
 }
 
+.book .status button {
+    background: inherit;
+    font-weight: 500;
+}
+
+.book .status button:hover {
+    transform: scale(1.05);
+    transition: transform .1s;
+}
+
+.book .status button:active {
+    transform: scale(1);
+    transition: transform .1s;
+}
+
 
 
             /********** ADD BOOK **********/

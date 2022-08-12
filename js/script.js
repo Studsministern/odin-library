@@ -117,6 +117,12 @@ function addBookToLibrary(book) {
 
 function displayBook(book) {
     bookList.insertAdjacentHTML('beforeEnd', book.htmlMarkup);
+    const statusButton = bookList.querySelector(':last-child > .status > button'); // Find the most recently added button
+    
+    statusButton.addEventListener('mousedown', () => { // Toggle status and update textContent on click
+        book.toggleStatus();
+        statusButton.textContent = (book.status) ? 'Read' : 'Not read';
+    });
 }
 
 function displayBookList() {
@@ -145,7 +151,9 @@ function Book(title, author, pages, status) {
             <p class="title">${this.title}</p>
             <p class="author">${this.author}</p>
             <p class="pages">${this.pages}</p>
-            <p class="status">${this.status ? 'Read' : 'Not read'}</p>
+            <div class="status">
+                <button>${this.status ? 'Read' : 'Not read'}</button>
+            </div>
         </div>
         `;
 
