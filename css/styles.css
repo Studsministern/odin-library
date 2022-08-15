@@ -401,3 +401,28 @@ button:active {
     transform: scale(1);
     transition: transform .1s;
 }
+
+
+
+            /*****************************
+            
+                MOBILE AND TABLET MODE:
+
+            *****************************/
+
+@media screen and (max-width: 500px) {
+    :root {
+        --side-column-width: calc(50vw - 200px); /* 50 px wide at 500 px screen width, 0 px wide at 400 px screen width */
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :root {
+        --side-column-width: 0px;
+    }
+    
+    :root,
+    body {
+        font-size: 4vw;
+    }
+}
