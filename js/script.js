@@ -163,28 +163,30 @@ function removeBook(book) {
 
 
 
-/* Book function */
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    
-    this.htmlMarkup = `
-        <div class="book" title="${this.title}">
-            <p class="title">${this.title}</p>
-            <p class="author">${this.author}</p>
-            <p class="pages">${this.pages}</p>
-            <div class="status">
-                <button>${this.status ? 'Read' : 'Not read'}</button>
-            </div>
-            <div class="remove">
-                <button>x</button>
-            </div>
-        </div>
-        `;
+/* Book class */
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+        this.htmlMarkup = `
+                      <div class="book" title="${this.title}">
+                          <p class="title">${this.title}</p>
+                          <p class="author">${this.author}</p>
+                        <p class="pages">${this.pages}</p>
+                        <div class="status">
+                              <button>${this.status ? 'Read' : 'Not read'}</button>
+                          </div>
+                          <div class="remove">
+                              <button>x</button>
+                          </div>
+                      </div>
+                      `;
+        console.log('Hi!');
+    }
 
-    this.toggleStatus = function() {
+    toggleStatus() {
         this.status = !this.status;
     }
 }
