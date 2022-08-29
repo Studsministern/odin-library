@@ -183,7 +183,6 @@ class Book {
                           </div>
                       </div>
                       `;
-        console.log('Hi!');
     }
 
     toggleStatus() {
