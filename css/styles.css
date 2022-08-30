@@ -146,6 +146,14 @@ header a span.link:active {
     font-weight: 700;
 }
 
+.list-headers h2 {
+    width: min-content;
+}
+
+.list-headers h2:hover {
+    cursor: pointer;
+}
+
 
 
             /********** BOOK LIST **********/
