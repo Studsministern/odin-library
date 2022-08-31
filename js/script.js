@@ -232,6 +232,9 @@ form.noValidate = true; // Prevents submitting before validation
 /* Variables */
 let library = [];
 addBook(new Book('The Intelligent Investor', 'Benjamin Graham', '587', false));
+addBook(new Book('The Art of War', 'Sun Tzu', '160', true));
+addBook(new Book('Sapiens', 'Yuval Noah Harari', '431', true));
+
 
 
 /* Event listeners */
