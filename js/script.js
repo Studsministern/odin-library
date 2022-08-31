@@ -134,14 +134,10 @@ function displayBook(book) {
 
 function displayBookList() {
     /* Clears the list */
-    bookList.forEach(e => {
-        bookList.remove(e);
-    });
+    bookList.querySelectorAll('.book').forEach(book => book.remove());
     
     /* Readds the elements */
-    library.forEach(book => {
-       displayBook(book); 
-    });
+    library.forEach(book => displayBook(book));
 }
 
 function removeBook(book) {
