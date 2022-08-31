@@ -368,6 +368,8 @@ button[type="submit"]:active {
 }
 
 .status {
+    display: flex;
+    justify-content: flex-end;
     text-align: end;
     width: 10%;
 }
