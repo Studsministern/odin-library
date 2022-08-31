@@ -157,6 +157,54 @@ function removeBook(book) {
     bookList.querySelector(`.book[title="${book.title}"]`).remove();
 }
 
+function sortList(header) {
+    switch(header.dataset.header) {
+        case 'author':
+            library.sort((b1, b2) => {
+                a1 = b1.author.toLowerCase();
+                a2 = b2.author.toLowerCase();
+                if(a1 !== a2) {
+                    return (a1 > a2) ? 1 : -1;
+                }
+                t1 = b1.title.toLowerCase();
+                t2 = b2.title.toLowerCase();
+                return (t1 > t2) ? 1 : -1; 
+            });
+            break;
+        case 'status':
+            library.sort((b1, b2) => {
+                s1 = b1.status;
+                s2 = b2.status;
+                if(s1 !== s2) {
+                    return (s1 > s2) ? 1 : -1;
+                }
+                t1 = b1.title.toLowerCase();
+                t2 = b2.title.toLowerCase();
+                return (t1 > t2) ? 1 : -1; 
+            });
+            break;
+        case 'pages':
+            library.sort((b1, b2) => {
+                p1 = +b1.pages;
+                p2 = +b2.pages;
+                if(p1 !== p2) {
+                    return (p1 > p2) ? 1 : -1;
+                }
+                t1 = b1.pages.toLowerCase();
+                t2 = b2.pages.toLowerCase();
+                return (t1 > t2) ? 1 : -1; 
+            });
+            break;
+        case 'title':
+            library.sort((b1, b2) => (b1.title > b2.title) ? 1 : -1);
+            break;
+        default:
+            console.log('Something went wrong!')
+    }
+
+    displayBookList();
+}
+
 
 
 /* Book class */
@@ -213,6 +261,7 @@ function resetInputs() {
 /* DOM variables */
 const bookList = document.querySelector('.book-list');
 
+const listHeaders = document.querySelectorAll('.list-headers h2');
 const openFormButton = document.querySelector('.open-form');
 
 const formContainer = document.querySelector('.form-container');
@@ -234,6 +283,10 @@ addBook(new Book('Sapiens', 'Yuval Noah Harari', '431', true));
 
 
 /* Event listeners */
+listHeaders.forEach(header => {
+    header.addEventListener('click', () => sortList(header));
+});
+
 openFormButton.addEventListener('click', showForm);
 
 inputLabels.forEach(inputLabel => {
