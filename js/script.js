@@ -166,9 +166,7 @@ function sortList(header) {
                 if(a1 !== a2) {
                     return (a1 > a2) ? 1 : -1;
                 }
-                t1 = b1.title.toLowerCase();
-                t2 = b2.title.toLowerCase();
-                return (t1 > t2) ? 1 : -1; 
+                return sortByTitle(); 
             });
             break;
         case 'status':
@@ -178,9 +176,7 @@ function sortList(header) {
                 if(s1 !== s2) {
                     return (s1 > s2) ? 1 : -1;
                 }
-                t1 = b1.title.toLowerCase();
-                t2 = b2.title.toLowerCase();
-                return (t1 > t2) ? 1 : -1; 
+                return sortByTitle(b1, b2);
             });
             break;
         case 'pages':
@@ -190,19 +186,21 @@ function sortList(header) {
                 if(p1 !== p2) {
                     return (p1 > p2) ? 1 : -1;
                 }
-                t1 = b1.pages.toLowerCase();
-                t2 = b2.pages.toLowerCase();
-                return (t1 > t2) ? 1 : -1; 
+                return sortByTitle(b1, b2);
             });
             break;
         case 'title':
-            library.sort((b1, b2) => (b1.title > b2.title) ? 1 : -1);
+            library.sort((b1, b2) => sortByTitle(b1, b2));
             break;
         default:
             console.log('Something went wrong!')
     }
 
     displayBookList();
+}
+
+function sortByTitle(b1, b2) {
+    return (b1.title.toLowerCase() > b2.title.toLowerCase()) ? 1 : -1; 
 }
 
 
