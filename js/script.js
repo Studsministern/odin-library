@@ -259,7 +259,7 @@ function resetInputs() {
 /* DOM variables */
 const bookList = document.querySelector('.book-list');
 
-const listHeaders = document.querySelectorAll('.list-headers h2');
+const listHeaders = document.querySelectorAll('.list-headers div[data-header]');
 const openFormButton = document.querySelector('.open-form');
 
 const formContainer = document.querySelector('.form-container');

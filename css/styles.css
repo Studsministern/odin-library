@@ -146,11 +146,21 @@ header a span.link:active {
     font-weight: 700;
 }
 
+.list-headers div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .list-headers h2 {
     width: min-content;
 }
 
-.list-headers h2:hover {
+.list-headers img {
+    height: 1.8rem;
+}
+
+.list-headers div[data-header]:hover {
     cursor: pointer;
 }
 
@@ -368,7 +378,6 @@ button[type="submit"]:active {
 }
 
 .status {
-    display: flex;
     justify-content: flex-end;
     text-align: end;
     width: 10%;
