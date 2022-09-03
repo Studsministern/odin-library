@@ -158,6 +158,17 @@ header a span.link:active {
 
 .list-headers img {
     height: 1.8rem;
+    visibility: hidden;
+}
+
+.list-headers img.ascending {
+    visibility: visible;
+    content: url('../img/arrow_drop_up_FILL1_wght400_GRAD0_opsz48.png');
+}
+
+.list-headers img.descending {
+    visibility: visible;
+    content: url('../img/arrow_drop_down_FILL1_wght400_GRAD0_opsz48.png');
 }
 
 .list-headers div[data-header]:hover {
