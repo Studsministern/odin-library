@@ -159,6 +159,9 @@ function removeBook(book) {
 
 function sortList(header) {
     switch(header.dataset.header) {
+        case previouslySorted:
+            library.reverse();
+            break;
         case 'author':
             library.sort((b1, b2) => {
                 a1 = b1.author.toLowerCase();
@@ -196,11 +199,30 @@ function sortList(header) {
             console.log('Something went wrong!')
     }
 
+    previouslySorted = header.dataset.header;
     displayBookList();
 }
 
 function sortByTitle(b1, b2) {
     return (b1.title.toLowerCase() > b2.title.toLowerCase()) ? 1 : -1; 
+}
+
+function changeSortArrows(header) {
+    headerDOM = header.querySelector('img');
+
+    if(previouslySorted !== header.dataset.header) {
+        listHeaders.forEach(e => e.querySelector('img').removeAttribute('class'));
+
+        headerDOM.classList.add('ascending');
+    } else {
+        if(headerDOM.classList.contains('ascending')) {
+            headerDOM.classList.remove('ascending');
+            headerDOM.classList.add('descending');
+        } else {
+            headerDOM.classList.remove('descending');
+            headerDOM.classList.add('ascending');
+        }
+    }
 }
 
 
@@ -277,12 +299,16 @@ let library = [];
 addBook(new Book('The Intelligent Investor', 'Benjamin Graham', '587', false));
 addBook(new Book('The Art of War', 'Sun Tzu', '160', true));
 addBook(new Book('Sapiens', 'Yuval Noah Harari', '431', true));
+let previouslySorted;
 
 
 
 /* Event listeners */
 listHeaders.forEach(header => {
-    header.addEventListener('click', () => sortList(header));
+    header.addEventListener('click', () => {
+        changeSortArrows(header);
+        sortList(header);
+    });
 });
 
 openFormButton.addEventListener('click', showForm);
