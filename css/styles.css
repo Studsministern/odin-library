@@ -158,16 +158,16 @@ header a span.link:active {
 
 .list-headers img {
     height: 1.8rem;
-    visibility: hidden;
+    display: none;
 }
 
 .list-headers img.ascending {
-    visibility: visible;
+    display: block;
     content: url('../img/arrow_drop_down_FILL1_wght400_GRAD0_opsz48.png');
 }
 
 .list-headers img.descending {
-    visibility: visible;
+    display: block;
     content: url('../img/arrow_drop_up_FILL1_wght400_GRAD0_opsz48.png');
 }
 
@@ -388,7 +388,7 @@ button[type="submit"]:active {
     width: 20%;
 }
 
-.status {
+div.status {
     justify-content: flex-end;
     text-align: end;
     width: 10%;
