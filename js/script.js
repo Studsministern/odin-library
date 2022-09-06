@@ -210,16 +210,16 @@ function sortByTitle(b1, b2) {
 function changeSortArrows(header) {
     headerDOM = header.querySelector('img');
 
-    if(previouslySorted !== header.dataset.header) {
+    if(previouslySorted !== header.dataset.header) { // Pressing a new header removes all classes and adds ascending to current header
         listHeaders.forEach(e => e.querySelector('img').removeAttribute('class'));
 
         headerDOM.classList.add('ascending');
     } else {
-        if(headerDOM.classList.contains('ascending')) {
+        if(headerDOM.classList.contains('ascending')) { // Switches from ascending to descending arrow
             headerDOM.classList.remove('ascending');
             headerDOM.classList.add('descending');
         } else {
-            headerDOM.classList.remove('descending');
+            headerDOM.classList.remove('descending'); // Switches from descending to ascending arrow
             headerDOM.classList.add('ascending');
         }
     }
