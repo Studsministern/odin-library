@@ -89,6 +89,7 @@ body {
         / var(--side-column-width) calc(100vw - 2 * var(--side-column-width)) var(--side-column-width);
     font: 16px black Roboto, Helvetica, sans-serif;
     background: var(--bg-color-main);
+    overflow: hidden auto;
 }
 
 
